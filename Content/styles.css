@@ -1,0 +1,197 @@
+﻿body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.oswald-header {
+    font-family: 'Oswald', sans-serif;
+}
+
+.user-image img {
+    width: 50px;
+}
+
+.nav-header i {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.aside {
+    background: linear-gradient(to bottom, #9d50bb, #6e48aa);
+    position: fixed;
+    width: 300px;
+    height: calc(100% - 10vh);
+    overflow-y: hidden;
+    top: 5.6em;
+    left: 0;
+    border-top-left-radius: 15px;
+    transform: translate(-500px);
+    transition: transform ease 2s;
+    z-index: 99;
+}
+
+.left {
+    transform: translateX(0px);
+}
+
+.aside::-webkit-scrollbar {
+    width: 5px;
+}
+
+.aside::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.aside::-webkit-scrollbar-thumb {
+    background: #adb5bd;
+}
+
+.aside::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.aside:hover {
+    overflow-y: scroll;
+}
+
+.aside p {
+    margin: 0;
+}
+
+.user-icon i {
+    font-size: 5rem;
+    color: #000;
+}
+
+.user-header h1 {
+    font-size: 1.7rem;
+}
+
+.accordion {
+    --bs-accordion-bg: transparent;
+    --bs-accordion-btn-color: #fff;
+    --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-button:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 0 transparent;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #fff;
+    background-color: transparent;
+    box-shadow: 0 0 0 0 transparent;
+}
+
+.accordion-body .nav-link {
+    font-weight: 300;
+}
+
+.header-link {
+    padding: 0.7rem 0 0.5rem 1.3rem;
+    border-radius: 5px;
+}
+
+.header-link:hover, .accordion-header:hover, .aside-list:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.accordion-item {
+    border: none;
+}
+
+.accordion-header {
+    border-radius: 5px;
+}
+
+.accordion-body {
+    padding: 0;
+    padding-left: 2rem;
+}
+
+.accordion-body ul {
+    border-left: 2px solid #fff;
+    padding-left: 1rem;
+}
+
+.aside-list {
+    padding: 0.5rem 0 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.header-icon {
+    width: 40px;
+}
+
+.list-icon {
+    width: 30px;
+}
+
+.logout-button input {
+    padding: 0.8rem 4rem;
+}
+
+.main {
+    background: #eee;
+    background: url("../Images/pencil.jpg") center/cover fixed no-repeat;
+    margin-top: 65px;
+    min-height: 100vh;
+}
+
+section.hero {
+    height: 80vh;
+}
+
+section.hero h2 {
+    z-index: 3;
+    font-size: 2rem;
+}
+
+section.hero p {
+    z-index: 3;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/*Add Class Page*/
+.class-form .form-control{
+    width: 40%;
+}
+
+.class-form .btn {
+    padding: 0.5rem 3rem;
+}
+
+@media (min-width: 576px) {
+    .aside {
+        top: 4.2em;
+    }
+}
+
+@media (min-width: 768px) {
+    section.hero h2 {
+        font-size: 2.5rem;
+    }
+
+    section.hero p {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .aside {
+        transform: translateX(0px);
+    }
+
+    .left {
+        transform: translateX(-500px);
+    }
+
+    .main {
+        width: calc(100% - 330px);
+        margin-left: 330px;
+    }
+}
