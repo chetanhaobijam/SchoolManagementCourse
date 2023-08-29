@@ -68,6 +68,7 @@ namespace SchoolManagementProject.Admin
         protected void GridView_Class_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridView_Class.EditIndex = e.NewEditIndex;
+            GetClass();
         }
 
         protected void GridView_Class_RowUpdating(object sender, GridViewUpdateEventArgs e)

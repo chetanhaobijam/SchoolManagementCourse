@@ -1,4 +1,8 @@
-﻿body, html {
+﻿:root {
+    --primary-blue: #0070BB;
+}
+
+body, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,6 +10,10 @@
 
 .oswald-header {
     font-family: 'Oswald', sans-serif;
+}
+
+.text-primary-blue {
+    color: var(--primary-blue);
 }
 
 .user-image img {
@@ -18,7 +26,10 @@
 }
 
 .aside {
-    background: linear-gradient(to bottom, #9d50bb, #6e48aa);
+    /*background: linear-gradient(to bottom, #9d50bb, #6e48aa);*/
+    background: linear-gradient(270deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%);
     position: fixed;
     width: 300px;
     height: calc(100% - 10vh);

@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Admin\AddClass.aspx" />
     <Content Include="Admin\AdminHome.aspx" />
+    <Content Include="Admin\ClassFees.aspx" />
     <Content Include="Content\styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\chevron-down.svg" />
@@ -97,6 +98,13 @@
     </Compile>
     <Compile Include="Admin\AdminMaster.Master.designer.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ClassFees.aspx.cs">
+      <DependentUpon>ClassFees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ClassFees.aspx.designer.cs">
+      <DependentUpon>ClassFees.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
