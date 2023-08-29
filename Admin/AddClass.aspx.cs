@@ -31,7 +31,7 @@ namespace SchoolManagementProject.Admin
         {
             try
             {
-                DataTable dt = fn.Fetch("Select * from Class where ClassName = '"+Txt_ClassName.Text.Trim()+"'");
+                DataTable dt = fn.Fetch("Select * from Class where className = '"+Txt_ClassName.Text.Trim()+"'");
                 if (dt.Rows.Count == 0)
                 {
                     string query = "Insert into Class values('"+Txt_ClassName.Text.Trim()+"')";
@@ -89,11 +89,6 @@ namespace SchoolManagementProject.Admin
             {
                 Response.Write("<script>alert('" + ex.Message + "')<script>");
             }
-        }
-
-        protected void GridView_Class_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

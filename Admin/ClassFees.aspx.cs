@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -59,9 +60,63 @@ namespace SchoolManagementProject.Admin
 
         private void GetFees()
         {
-            DataTable dt = fn.Fetch("Select * from Fees");
+            DataTable dt = fn.Fetch(@"Select Row_NUMBER() over (Order by (Select 1)) as [Sl.No.], f.FeesId, f.ClassId,  c.ClassName, f.FeesAmount from Fees f inner join Class c on c.ClassId = f.FeesId");
             GridView_Fees.DataSource = dt;
             GridView_Fees.DataBind();
+        }
+
+        protected void GridView_Fees_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView_Fees.PageIndex = e.NewPageIndex;
+            GetFees();
+        }
+
+        protected void GridView_Fees_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView_Fees.EditIndex = -1;
+            GetFees();
+        }
+
+        protected void GridView_Fees_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                int feesId = Convert.ToInt32(GridView_Fees.DataKeys[e.RowIndex].Values[0]);
+                fn.Query("Delete from Fees where FeesId = '" + feesId + "'");
+                Lbl_Alert.Text = "Fees Updated Successfully";
+                Lbl_Alert.CssClass = "alert alert-warning";
+                GetFees();
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "')<script>");
+            }
+        }
+
+        protected void GridView_Fees_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridView_Fees.EditIndex = e.NewEditIndex;
+            GetFees();
+        }
+
+        protected void GridView_Fees_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            try
+            {
+                GridViewRow row = GridView_Fees.Rows[e.RowIndex];
+                int feesId = Convert.ToInt32(GridView_Fees.DataKeys[e.RowIndex].Values[0]);
+                string feesAmt = (row.FindControl("Txt_FeesEdit") as TextBox).Text;
+                fn.Query("Update Fees set FeesAmount = '"+feesAmt.Trim()+"' where FeesId = '"+feesId+"' ");
+                Lbl_Alert.Text = "Fees Updated Successfully";
+                Lbl_Alert.CssClass = "alert alert-success";
+                GridView_Fees.EditIndex = -1;
+                GetFees();
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "')<script>");
+            }
         }
     }
 }
