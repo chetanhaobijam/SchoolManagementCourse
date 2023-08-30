@@ -60,7 +60,7 @@ namespace SchoolManagementProject.Admin
 
         private void GetFees()
         {
-            DataTable dt = fn.Fetch(@"Select Row_NUMBER() over (Order by (Select 1)) as [Sl.No.], f.FeesId, f.ClassId,  c.ClassName, f.FeesAmount from Fees f inner join Class c on c.ClassId = f.FeesId");
+            DataTable dt = fn.Fetch(@"Select Row_NUMBER() over (Order by (Select 1)) as [Sl.No.], f.FeesId, f.ClassId,  c.ClassName, f.FeesAmount from Fees f inner join Class c on c.ClassId = f.ClassId");
             GridView_Fees.DataSource = dt;
             GridView_Fees.DataBind();
         }
