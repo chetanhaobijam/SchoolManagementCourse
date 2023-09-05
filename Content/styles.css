@@ -148,7 +148,7 @@ body, html {
 .main {
     background: #eee;
     background: url("../Images/pencil.jpg") center/cover fixed no-repeat;
-    margin-top: 65px;
+    padding-top: 65px;
     min-height: 100vh;
 }
 
