@@ -71,6 +71,7 @@
     <Content Include="Admin\AdminHome.aspx" />
     <Content Include="Admin\ClassFees.aspx" />
     <Content Include="Admin\Subjects.aspx" />
+    <Content Include="Admin\Teacher.aspx" />
     <Content Include="Content\styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\chevron-down.svg" />
@@ -113,6 +114,13 @@
     </Compile>
     <Compile Include="Admin\Subjects.aspx.designer.cs">
       <DependentUpon>Subjects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Teacher.aspx.cs">
+      <DependentUpon>Teacher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Teacher.aspx.designer.cs">
+      <DependentUpon>Teacher.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

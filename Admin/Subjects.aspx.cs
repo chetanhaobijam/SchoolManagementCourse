@@ -105,10 +105,5 @@ namespace SchoolManagementProject.Admin
                 throw ex;
             }
         }
-
-        protected void DDL_ClassEdit_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

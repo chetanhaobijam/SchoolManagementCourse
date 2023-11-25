@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Subjects.aspx.cs" Inherits="SchoolManagementProject.Admin.Subjects" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Subjects.aspx.cs" Inherits="SchoolManagementProject.Admin.Subjects" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 </asp:Content>
@@ -43,6 +43,7 @@
                                 <ItemTemplate>
                                     <asp:Label ID="Lbl_Class_GV" runat="server" Text='<%# Eval("ClassName") %>'></asp:Label>
                                 </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Subject">
                                 <EditItemTemplate>
