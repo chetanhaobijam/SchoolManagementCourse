@@ -55,7 +55,7 @@
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                             </asp:TemplateField>
                             <asp:CommandField CausesValidation="False" ShowEditButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-outline-primary me-1">
-<ControlStyle CssClass="btn btn-outline-primary me-1"></ControlStyle>
+                                <ControlStyle CssClass="btn btn-outline-primary me-1"></ControlStyle>
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                             </asp:CommandField>
                         </Columns>

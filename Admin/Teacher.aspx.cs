@@ -49,7 +49,8 @@ namespace SchoolManagementProject.Admin
             catch (Exception ex)
             {
 
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                //Response.Write("<script>alert('" + ex.Message + "');</script>");
+                throw ex;
             }
         }
 
@@ -58,6 +59,66 @@ namespace SchoolManagementProject.Admin
             DataTable dt = fn.Fetch("Select ROW_NUMBER() OVER (ORDER BY (SELECT 1)) AS [Sl. No.], TeacherId, [Name], DoB, Gender, Mobile, Email, [Address], [Password] from Teacher");
             GridView_Teacher.DataSource = dt;
             GridView_Teacher.DataBind();
+        }
+
+        protected void GridView_Teacher_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                int TeacherId = Convert.ToInt32(GridView_Teacher.DataKeys[e.RowIndex].Values[0]);
+                fn.Query("Delete from Teacher where TeacherId = '" + TeacherId + "'");
+                Lbl_Alert.Text = "Teacher Deleted Successfully";
+                Lbl_Alert.CssClass = "alert alert-warning";
+                GridView_Teacher.EditIndex = -1;
+                GetTeachers();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        protected void GridView_Teacher_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            try
+            {
+                GridViewRow row = GridView_Teacher.Rows[e.RowIndex];
+                int TeacherId = Convert.ToInt32(GridView_Teacher.DataKeys[e.RowIndex].Values[0]);
+                string name = (row.FindControl("Txt_Name") as TextBox).Text;
+                string mobile = (row.FindControl("Txt_Mobile") as TextBox).Text;
+                string password = (row.FindControl("Txt_Password") as TextBox).Text;
+                string address = (row.FindControl("Txt_Address") as TextBox).Text;
+                fn.Query("Update Teacher set Name = '"+name+"', Mobile = '"+mobile+"', Password = '"+password+"', Address = '"+address+"' where TeacherId = '" + TeacherId + "'");
+                Lbl_Alert.Text = "Teacher Updated Successfully";
+                Lbl_Alert.CssClass = "alert alert-success";
+                GridView_Teacher.EditIndex = -1;
+                GetTeachers();
+
+            }
+            catch (Exception ex)
+            {
+                //Response.Write("<script>alert('" + ex.Message + "')<script>");
+                throw ex;
+            }
+        }
+
+        protected void GridView_Teacher_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView_Teacher.PageIndex = e.NewPageIndex;
+            GetTeachers();
+        }
+
+        protected void GridView_Teacher_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView_Teacher.EditIndex = -1;
+            GetTeachers();
+        }
+
+        protected void GridView_Teacher_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridView_Teacher.EditIndex = e.NewEditIndex;
+            GetTeachers();
         }
     }
 

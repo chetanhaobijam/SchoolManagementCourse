@@ -60,7 +60,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <asp:Button ID="Btn_AddTeacher" CssClass="btn btn-primary px-4 py-2 mt-md-2" onclick="Btn_AddTeacher_Click" runat="server" Text="Add Teacher" />
+                    <asp:Button ID="Btn_AddTeacher" CssClass="btn btn-primary px-4 py-2 mt-md-2" OnClick="Btn_AddTeacher_Click" runat="server" Text="Add Teacher" />
                 </div>
             </div>
             <div class="row">
@@ -71,34 +71,63 @@
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-lg-8">
-                    <asp:GridView ID="GridView_Teacher" CssClass="table table-hover table-bordered" EmptyDataText="No Record Present" runat="server" AutoGenerateColumns="False" AllowPaging="true" PageSize="5" DataKeyNames="TeacherId">
+                <div class="col-12 table-responsive">
+                    <asp:GridView ID="GridView_Teacher" CssClass="table table-hover table-bordered" EmptyDataText="No Record Present" runat="server" AutoGenerateColumns="False" AllowPaging="true" PageSize="5" DataKeyNames="TeacherId" OnRowDeleting="GridView_Teacher_RowDeleting" OnRowUpdating="GridView_Teacher_RowUpdating" OnPageIndexChanging="GridView_Teacher_PageIndexChanging" OnRowCancelingEdit="GridView_Teacher_RowCancelingEdit" OnRowEditing="GridView_Teacher_RowEditing">
                         <Columns>
-                            <asp:BoundField DataField="Sl.No." HeaderText="Sl.No." ReadOnly="True">
+                            <asp:BoundField DataField="Sl. No." HeaderText="Sl.No." ReadOnly="True">
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                             </asp:BoundField>
-                            <asp:TemplateField HeaderText="Class">
+
+                            <asp:TemplateField HeaderText="Name">
                                 <EditItemTemplate>
-                                    <asp:DropDownList ID="DDL_ClassEdit" runat="server" DataSourceID="SqlDataSource1" DataTextField="ClassName" DataValueField="ClassId" SelectedValue='<%# Eval("ClassId") %>' CssClass="form-select"></asp:DropDownList>
-                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SchoolCS %>" SelectCommand="SELECT * FROM [Class]"></asp:SqlDataSource>
+                                    <asp:TextBox ID="Txt_Name" runat="server" CssClass="form-control" Text='<%# Eval("Name") %>'></asp:TextBox>
                                 </EditItemTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="Lbl_Class_GV" runat="server" Text='<%# Eval("ClassName") %>'></asp:Label>
+                                    <asp:Label ID="Lbl_Name" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                             </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Mobile">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="Txt_Mobile" CssClass="form-control" Text='<%#Eval("Mobile")%>' runat="server"></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Lbl_Mobile" runat="server" Text='<%#Eval("Mobile")%>'></asp:Label>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                            </asp:TemplateField>
+
                             <asp:TemplateField HeaderText="Subject">
-                                <EditItemTemplate>
-                                    <asp:TextBox ID="Txt_SubjectEdit" CssClass="form-control" Text='<%#Eval("SubjectName")%>' runat="server"></asp:TextBox>
-                                </EditItemTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="Lbl_Subject_GV" runat="server" Text='<%#Eval("SubjectName")%>'></asp:Label>
+                                    <asp:Label ID="Lbl_Email" runat="server" Text='<%#Eval("Email")%>'></asp:Label>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:CommandField CausesValidation="False" ShowEditButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-outline-primary me-1">
+
+                            <asp:TemplateField HeaderText="Mobile">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="Txt_Password" CssClass="form-control" Text='<%#Eval("Password")%>' runat="server"></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Lbl_Password" runat="server" Text='<%#Eval("Password")%>'></asp:Label>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Address">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="Txt_Address" CssClass="form-control" Text='<%#Eval("Address")%>' runat="server"></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Lbl_Address" runat="server" Text='<%#Eval("Address")%>'></asp:Label>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle"></ItemStyle>
+                            </asp:TemplateField>
+
+                            <asp:CommandField CausesValidation="False" ShowEditButton="True" ShowDeleteButton="true" ButtonType="Button" ControlStyle-CssClass="btn btn-outline-primary me-1">
                                 <ControlStyle CssClass="btn btn-outline-primary me-1"></ControlStyle>
-                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                <ItemStyle HorizontalAlign="Center" CssClass="d-flex flex-row"></ItemStyle>
                             </asp:CommandField>
                         </Columns>
                         <HeaderStyle CssClass="table-primary text-center" />
